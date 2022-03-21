@@ -55,11 +55,21 @@ void insert(struct Node *p, int index, int x)
         for (int i = 0; i < index-1; i++)
         {
             /* code */
-            p=p->next;
+            p=p->next; //moving p to the position of the index 
         }
-        t->next=p->next;
-        p->next=t;
+        t->next=p->next; //making next t point to next p
+        p->next=t; //making next p point to t
     }
+    
+}
+
+void lastInsert(int x)
+{
+    struct Node *t;
+    
+    t=new Node;
+    t->data=x;
+
     
 }
 
