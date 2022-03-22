@@ -56,8 +56,8 @@ int main()
     cout<<endl;
     cout<<recursionAddFirstnNos(100);
     cout<<endl;
-    cout<<recursionFactorial(10);
+    cout<<recursionFactorial(9);
     cout<<endl;
-    cout<<recursionPower(2,5);
+    cout<<recursionPower(9,7);
     return 0;
 }
