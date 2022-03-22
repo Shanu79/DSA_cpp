@@ -1,7 +1,6 @@
 #include<iostream>
 using namespace std;
-
-int s;
+int f=1;
 void rprint(int n)
 {
     if(n>0)
@@ -25,20 +24,28 @@ int recursionAddFirstnNos(int n)
 {
     if (n>0)
     {
-        s=s+n;
-        recursionAddFirstnNos(n-1);
+        n=n+recursionAddFirstnNos(n-1);
     }
-    return s;
+    return n;
 }
 
-int BacktrackRecursionAddFirstnNos(int n)
+int recursionFactorial(int n)
 {
-    if (n>0)
+    if (n>=1)
     {
-        BacktrackRecursionAddFirstnNos(n-1);
-        s=s+n;
+        f=f*n;
+        recursionFactorial(n-1);
     }
-    return s;
+    return f;
+}
+
+int recursionPower(int n,int p)
+{
+    if (p>1)
+    {
+        n=n*recursionPower(n,p-1);                
+    }
+    return n;
 }
 
 int main()
@@ -47,8 +54,10 @@ int main()
     cout<<endl;
     rprintBacktracking(4);
     cout<<endl;
-    //cout<<recursionAddFirstnNos(3);
+    cout<<recursionAddFirstnNos(100);
     cout<<endl;
-    cout<<BacktrackRecursionAddFirstnNos(7);
+    cout<<recursionFactorial(10);
+    cout<<endl;
+    cout<<recursionPower(2,5);
     return 0;
 }
