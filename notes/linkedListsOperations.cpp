@@ -1,4 +1,5 @@
 #include<iostream>
+#include<math.h>
 using namespace std;
 
 struct Node
@@ -63,23 +64,163 @@ void insert(struct Node *p, int index, int x)
     
 }
 
-void lastInsert(int x)
+void lastInsert(struct Node *p,int x)
 {
-    struct Node *t;
-    
+    struct Node *t,*last=p;
+
     t=new Node;
     t->data=x;
+    t->next=NULL;
 
+    if(first==NULL)
+    {
+        first=t;
+        last=t;
+    }
+    else
+    {
+        while (last->next!=NULL)
+        {
+            last=last->next;
+        }
+        last->next=t;
+        last=t;
+    }
+}
+
+int LLmax(struct Node *p)
+{
+    int max= INT_LEAST16_MIN;
+
+    while (p)
+    {
+        if (p->data>max)
+        {
+            max=p->data;
+        }
+        p=p->next;
+    }
+return max;
+}
+
+int LLmin(struct Node *p)
+{
+    int min= INT_LEAST16_MAX;
+
+    while (p)
+    {
+        if (p->data<min)
+        {
+            min=p->data;
+        }
+        p=p->next;
+    }
+return min;
+}
+
+bool lsearch(struct Node *p,int key)
+{
+    while (p)
+    {
+        /* code */
+        if (key==p->data)
+        {
+            /* code */
+            return true;
+        }
+        p=p->next;
+    }
+    return false;
     
 }
+
+Node *Rsearch(struct Node *p,int key)
+{
+    if (p==NULL)
+    {
+        return NULL;
+    }
+    if (p->data==key)
+    {
+        /* code */
+        return p;
+    }
+    else
+        return Rsearch(p->next,key);
+}
+
+int LLdelete(struct Node *p,int pos)
+{
+    struct Node *t=p;
+    struct Node *q=NULL;
+
+    if(pos<0 || pos>count(first))
+    {
+        return -1;
+    }
+
+    if (pos==1)
+    {
+        /* code */
+        q=first;
+        first=first->next;
+        delete q;
+    }
+    
+    for (int i = 0; i < pos-1; i++)
+    {
+        q=t;
+        t=t->next;
+    }
+
+    q->next=t->next;
+    delete t;
+    return t->data;
+}
+
+bool isSorted(struct Node *p)
+{
+    int x=INT16_MIN;
+    
+    while (p)
+    {
+        /* code */
+        if (x>p->data)
+        {
+            /* code */
+            return false;
+        }
+        x=p->data;
+        p=p->next;
+    }
+    return true;
+}
+
+//remove duplicates
+
 
 int main()
 {
     insert(first,0,10);
-    insert(first,1,1);
+    insert(first,1,0);
     insert(first,2,2);
     insert(first,3,3);
 
+    lastInsert(first,111);
+    lastInsert(first,6);
+    cout<<lsearch(first,111)<<endl;
+    //cout<<Rsearch(first,111)<<endl;
+    cout<<LLmax(first)<<endl;
+    cout<<LLmin(first)<<endl;
+
+    cout<<LLdelete(first,1)<<endl;
     display(first);
+
+    cout<<endl;
+    cout<<isSorted(first);
+
+
+
+
     return 0;
 }
