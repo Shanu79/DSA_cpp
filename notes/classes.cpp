@@ -30,5 +30,13 @@ int main(){
     harry.e = 89;
     // harry.setData(1,2,4);
     harry.getData();
+
+
+    string s = "abc";
+
+    string s1 = "ab";
+
+    cout<<s+s1;
+
     return 0;
 }
